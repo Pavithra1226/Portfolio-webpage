@@ -218,7 +218,7 @@
 
 <!-- Background Video -->
 <video autoplay muted loop id="bg-video">
-  <source src="video.mp4" type="video/mp4">
+  <source src="video/video.mp4" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
 <div id="video-overlay"></div>
@@ -324,11 +324,11 @@
     <div class="grid">
       <div class="card">
         <h3>Cisco Data Analyst Professional Certificate</h3>
-        <img src="forage.jpg" alt="Cisco Certificate">
+        <img src="img/forage.jpg" alt="Cisco Certificate">
       </div>
       <div class="card">
         <h3>Python Programming – GUVI</h3>
-        <img src="GuviCertification.png" alt="Python Certificate">
+        <img src="img/GuviCertification.png" alt="Python Certificate">
       </div>
     </div>
   </section>
@@ -352,6 +352,16 @@
     </div>
   </section>
 </main>
+<!-- Resume Download Button -->
+<div style="text-align:center; margin-top: 2rem;">
+  <a href="Pavithra R Resume.pdf" download 
+     style="background: #ffd700; color: #0e0e0e; padding: 0.8rem 1.5rem; 
+            border-radius: 8px; font-weight: bold; text-decoration: none; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: 0.3s;">
+    📄 Download Resume
+  </a>
+</div>
+
 
 <footer>
   &copy; 2025 Pavithra R. All rights reserved.
@@ -375,8 +385,8 @@
   }, { threshold: 0.1 });
 
   sections.forEach(section => { observer.observe(section); });
+  
 </script>
 
 </body>
 </html>
-
