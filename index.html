@@ -59,13 +59,13 @@
   font-size: 1.3rem;
   font-weight: bold;
   margin-top: 0.7rem;
-  height: 40px; /* height of a single role */
+  height: 40px;
   overflow: hidden;
   position: relative;
 }
 
 .animated-role .role {
-  height: 40px; /* same as container height */
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,7 +89,6 @@
   35% { opacity: 0; transform: translateY(-100%); }
   100% { opacity: 0; transform: translateY(-100%); }
 }
-
 
   nav {
     display: flex;
@@ -152,10 +151,9 @@
   }
 
   .details { display: none; margin-top: 0.7rem; color: #ffd700; }
-
   .card.open .details { display: block; }
 
-  .certificates img {
+  .certificates img, .project-img {
     width: 100%;
     border-radius: 12px;
     margin-bottom: 1rem;
@@ -187,7 +185,6 @@
 
   .summary-box .highlight { color: #ffd700; font-weight: bold; }
 
-  /* Contact Section Links */
   #contact a {
     color: #00e5ff;
     text-decoration: underline;
@@ -199,9 +196,8 @@
     text-shadow: 1px 1px 8px rgba(0,0,0,0.7);
   }
 
-  /* Section Animation & Scroll Fix */
   section {
-    scroll-margin-top: 90px; /* fixes nav overlap */
+    scroll-margin-top: 90px;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 1s ease, transform 1s ease;
@@ -228,11 +224,10 @@
   <h1>Pavithra R</h1>
   <p>BCA Graduate | Passionate about Data & Technology</p>
   <div class="animated-role">
-  <div class="role">SQL Developer</div>
-  <div class="role">Data Analyst</div>
-  <div class="role">Database Administrator</div>
-</div>
-
+    <div class="role">SQL Developer</div>
+    <div class="role">Data Analyst</div>
+    <div class="role">Database Administrator</div>
+  </div>
 </section>
 
 <nav>
@@ -307,13 +302,22 @@
     <div class="grid">
       <div class="card">
         <h3>Advanced SQL Employee Data Analysis</h3>
+         <img src="Advanced SQL Employee Data Analysis.png" alt="Employee Dashboard" class="project-img">
         <p>SQL queries using filtering, aggregation, joins, and subqueries to extract insights from employee datasets.</p>
         <a href="https://github.com/Pavithra1226/advanced_queries.sql/blob/main/advanced_queries.sql" target="_blank">🔗 View on GitHub</a>
       </div>
       <div class="card">
         <h3>Network Intrusion Detection</h3>
+         <img src="Network Intrusion Detection.png" alt="Employee Dashboard" class="project-img">
         <p>Machine learning model with 99.98% accuracy using Random Forest on KDD Cup 99 dataset.</p>
         <a href="https://github.com/Pavithra1226/data-visualization/blob/main/intrusion%20detection-checkpoint.ipynb" target="_blank">🔗 View on GitHub</a>
+      </div>
+      <div class="card">
+        <h3>Employee Dashboard & Insights</h3>
+        <img src="chart.png" alt="Employee Dashboard" class="project-img">
+        <p>Interactive Power BI dashboard showing employee trends, salary distributions, and leave analysis. Provides visual insights for management decisions.</p>
+        <p><strong>Tech:</strong> Power BI, Excel</p>
+        <a href="https://github.com/Pavithra1226/employee-insights-dashboard" target="_blank">🔗 View on GitHub</a>
       </div>
     </div>
   </section>
@@ -352,6 +356,7 @@
     </div>
   </section>
 </main>
+
 <!-- Resume Download Button -->
 <div style="text-align:center; margin-top: 2rem;">
   <a href="Pavithra R Resume.pdf" download 
@@ -362,19 +367,16 @@
   </a>
 </div>
 
-
 <footer>
   &copy; 2025 Pavithra R. All rights reserved.
 </footer>
 
 <script>
-  // Toggle skill details
   function toggleDetails(id) {
     const el = document.getElementById(id);
     el.parentElement.classList.toggle("open");
   }
 
-  // Scroll animation
   const sections = document.querySelectorAll("section");
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -385,10 +387,7 @@
   }, { threshold: 0.1 });
 
   sections.forEach(section => { observer.observe(section); });
-  
 </script>
 
 </body>
 </html>
-
-
