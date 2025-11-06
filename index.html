@@ -335,7 +335,35 @@
         <img src="GuviCertification.png" alt="Python Certificate">
       </div>
     </div>
+    <!-- 🆕 New Project: Inten App -->
+    <div class="card">
+      <h3>Inten – Internship Finder App</h3>
+      <!-- Video thumbnail -->
+      <div class="video-wrapper" style="position: relative; cursor: pointer;" onclick="playVideo(this)">
+        <img src="inten-thumbnail.png" alt="Inten App UI" class="project-img">
+        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:3rem; color:#ffd700;">▶</div>
+        <video width="100%" style="display:none; border-radius:12px;" controls>
+          <source src="Ui.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <p><strong>Tool:</strong> Figma</p>
+      <p><strong>Description:</strong> A mobile app that connects students with internships across government, private, and non-profit sectors. Includes login, signup, profile management, job listings, and application tracking.</p>
+      <p><strong>Skills:</strong> UI/UX Design · Wireframing · Prototyping · User Flow</p>
+    </div>
+  </div>
   </section>
+ <script>
+function playVideo(wrapper) {
+  const img = wrapper.querySelector('img');
+  const video = wrapper.querySelector('video');
+  const playBtn = wrapper.querySelector('div');
+  img.style.display = 'none';
+  playBtn.style.display = 'none';
+  video.style.display = 'block';
+  video.play();
+}
+</script>
 
   <!-- Contact -->
   <section id="contact" class="container">
@@ -391,4 +419,5 @@
 
 </body>
 </html>
+
 
