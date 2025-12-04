@@ -1,423 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pavithra R | Portfolio</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pavithra R | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020;
+      --glass: rgba(255,255,255,0.06);
+      --glass-strong: rgba(255,255,255,0.08);
+      --accent:#ffd700;
+      --muted:#98a0b3;
+      --purple: #805ad5;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;line-height:1.6;color:#e6eef8;background:linear-gradient(180deg,#071019 0%, #0b1020 60%);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+      -webkit-text-size-adjust:100%;
+    }
+    /* Sticky top navigation */
+    nav{
+      position:sticky;top:14px;display:flex;justify-content:center;gap:1rem;padding:10px 20px;background:linear-gradient(135deg, rgba(128,90,213,0.08), rgba(13,19,35,0.12));backdrop-filter:blur(6px);border-radius:999px;margin:12px auto;max-width:1100px;z-index:50;box-shadow:0 8px 30px rgba(2,6,23,0.6);
+    }
+    nav a{color:#f8fbff;text-decoration:none;padding:8px 14px;border-radius:12px;font-weight:600;transition:all .28s ease;font-family:Poppins,Inter}
+    nav a:hover{transform:translateY(-3px);background:linear-gradient(90deg,var(--purple),#9f7aea);box-shadow:0 8px 20px rgba(128,90,213,0.18)}
 
-  body {
-    color: #fff;
-    line-height: 1.6;
-    overflow-x: hidden;
-    background: #0e0e0e;
-  }
+    .container{width:90%;max-width:1100px;margin:36px auto;position:relative}
 
-  /* Background Video */
-  #bg-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
-    filter: brightness(0.5);
-  }
+    /* Hero */
+    .hero{
+      display:grid;grid-template-columns:1fr;gap:24px;align-items:center;text-align:center;padding:56px 0 40px;position:relative;z-index:2
+    }
+    .hero-inner{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:32px;border-radius:18px;box-shadow:0 12px 40px rgba(2,6,23,0.6);backdrop-filter: blur(8px);border:1px solid rgba(255,255,255,0.03)}
 
-  #video-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.4);
-    z-index: -1;
-  }
+    h1{font-family:Poppins,Inter;font-size:clamp(28px,4vw,44px);margin:0;color:#fff;letter-spacing:-0.4px}
+    .lead{color:var(--muted);font-size:1.05rem}
 
-  /* HERO SECTION */
-  .hero {
-    text-align: center;
-    padding: 5rem 1rem;
-    color: #fff;
-    position: relative;
-  }
+    .roles{margin-top:10px;height:36px;display:flex;align-items:center;justify-content:center}
+    .typewrap{display:inline-flex;align-items:center;gap:10px;color:#fff;font-weight:600}
+    .typed{color:var(--accent);font-family:Poppins;min-width:180px}
 
-  .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 0.4rem;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
-  }
+    /* Grid cards */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:28px}
+    .card{background:var(--glass);padding:18px;border-radius:14px;color:#f6f9ff;box-shadow:0 8px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03);transition:transform .28s ease,box-shadow .28s ease}
+    .card:hover{transform:translateY(-8px);box-shadow:0 18px 50px rgba(2,6,23,0.7)}
+    .card h3{margin:0 0 8px 0;font-size:1.05rem}
+    .card p{color:var(--muted);font-size:0.95rem}
 
-  .hero p {
-    font-size: 1.3rem;
-    text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
-  }
+    /* Project thumbnail */
+    .project-img{width:100%;border-radius:10px;margin:10px 0;border:2px solid rgba(255,215,0,0.12)}
 
-  .animated-role {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-top: 0.7rem;
-  height: 40px;
-  overflow: hidden;
-  position: relative;
-}
+    /* Buttons */
+    .btn{display:inline-block;background:linear-gradient(90deg,var(--purple),#b794f4);color:#fff;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700;box-shadow:0 8px 28px rgba(128,90,213,0.12);transition:transform .18s ease}
+    .btn:active{transform:translateY(1px)}
 
-.animated-role .role {
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transform: translateY(100%);
-  animation: role-slide 9s infinite;
-}
+    /* Summary box */
+    .summary{max-width:920px;margin:18px auto 0;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:12px;border-left:6px solid var(--accent);color:#eef6ff}
+    .highlight{color:var(--accent);font-weight:700}
 
-.animated-role .role:nth-child(1) { animation-delay: 0s; }
-.animated-role .role:nth-child(2) { animation-delay: 3s; }
-.animated-role .role:nth-child(3) { animation-delay: 6s; }
+    footer{margin:40px auto 30px;text-align:center;padding:20px;color:var(--muted)}
 
-@keyframes role-slide {
-  0% { opacity: 0; transform: translateY(100%); }
-  5% { opacity: 1; transform: translateY(0); }
-  30% { opacity: 1; transform: translateY(0); }
-  35% { opacity: 0; transform: translateY(-100%); }
-  100% { opacity: 0; transform: translateY(-100%); }
-}
+    /* Certificates carousel fallback */
+    .certificates img{width:100%;height:auto;border-radius:10px}
 
-  nav {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 1rem;
-    background: rgba(128,90,213,0.9);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  }
+    /* small screens */
+    @media (max-width:760px){
+      nav{padding:8px;gap:8px}
+      .hero{padding:34px 0}
+      .summary{padding:16px}
+    }
 
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-  }
+    /* subtle entrance animations */
+    section{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}
+    section.visible{opacity:1;transform:none}
 
-  nav a:hover {
-    color: #ffd700;
-  }
+    /* role typing caret */
+    .caret{width:2px;height:18px;background:var(--accent);display:inline-block;margin-left:6px;animation:blink 1s steps(2) infinite}
+    @keyframes blink{50%{opacity:0}}
 
-  .container {
-    width: 90%;
-    max-width: 1100px;
-    margin: 3rem auto;
-    position: relative;
-    z-index: 2;
-  }
-
-  h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #ffd700;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .card {
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-    color: #fff;
-  }
-
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.7);
-  }
-
-  .details { display: none; margin-top: 0.7rem; color: #ffd700; }
-  .card.open .details { display: block; }
-
-  .certificates img, .project-img {
-    width: 100%;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    border: 2px solid #ffd700;
-  }
-
-  footer {
-    text-align: center;
-    padding: 1.5rem;
-    background: rgba(128,90,213,0.9);
-    color: #fff;
-    margin-top: 3rem;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    box-shadow: 0 -3px 15px rgba(0,0,0,0.3);
-  }
-
-  .summary-box {
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(12px);
-    border-left: 6px solid #ffd700;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-    max-width: 850px;
-    margin: 0 auto;
-    color: #fff;
-  }
-
-  .summary-box .highlight { color: #ffd700; font-weight: bold; }
-
-  #contact a {
-    color: #00e5ff;
-    text-decoration: underline;
-    font-weight: bold;
-  }
-
-  #contact a:hover {
-    color: #ffd700;
-    text-shadow: 1px 1px 8px rgba(0,0,0,0.7);
-  }
-
-  section {
-    scroll-margin-top: 90px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease, transform 1s ease;
-  }
-
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-</style>
+    /* video background fallback */
+    #bg-video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:brightness(.35);}
+    #overlay{position:fixed;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.35), rgba(2,6,23,0.55));z-index:-1}
+  </style>
 </head>
 <body>
+  <!-- Optional background video (keeps original filename if you want to use video.mp4) -->
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="video.mp4" type="video/mp4">
+    <!-- fallback background will be gradient -->
+  </video>
+  <div id="overlay"></div>
 
-<!-- Background Video -->
-<video autoplay muted loop id="bg-video">
-  <source src="video.mp4" type="video/mp4">
-  Your browser does not support HTML5 video.
-</video>
-<div id="video-overlay"></div>
+  <!-- Navigation -->
+  <nav aria-label="Primary Navigation">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<!-- HERO SECTION -->
-<section class="hero">
-  <h1>Pavithra R</h1>
-  <p>BCA Graduate | Passionate about Data & Technology</p>
-  <div class="animated-role">
-    <div class="role">SQL Developer</div>
-    <div class="role">Data Analyst</div>
-    <div class="role">Database Administrator</div>
-  </div>
-</section>
+  <main class="container">
+    <!-- HERO -->
+    <header class="hero" id="home">
+      <div class="hero-inner">
+        <h1>Pavithra R</h1>
+        <p class="lead">BCA Graduate · Data Enthusiast · SQL Developer</p>
+        <div class="roles" aria-hidden="false">
+          <div class="typewrap">
+            <span style="color:var(--muted);font-weight:600">I build & analyze data as a</span>
+            <span class="typed" id="typed-role">SQL Developer</span>
+            <span class="caret" aria-hidden="true"></span>
+          </div>
+        </div>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#certifications">Certifications</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<main>
-  <!-- About -->
-  <section id="about" class="container">
-    <h2>About Me</h2>
-    <div class="summary-box">
-      <p>
-        Motivated professional with expertise in <strong>SQL</strong>, <strong>Python</strong>, and <strong>database management</strong>. Passionate about <strong>data analysis</strong> and delivering efficient, reliable, and optimized database solutions. Seeking to grow as a <span class="highlight">SQL Developer</span>, <span class="highlight">Data Analyst</span>, or <span class="highlight">Database Administrator (DBA)</span>. Quick learner, adaptable, and eager to apply analytical and technical skills to deliver impactful <strong>data-driven solutions</strong>.
-      </p>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills" class="container">
-    <h2>Technical Skills</h2>
-    <div class="grid">
-      <div class="card" onclick="toggleDetails('sql')"> SQL
-        <div id="sql" class="details">
-          <p>Skilled in <strong>SQL (Intermediate)</strong> with strong hands-on experience in writing queries, filtering data, performing joins, and applying aggregations.</p>
+        <div style="margin-top:18px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap">
+          <a class="btn" href="Pavithra .R _Resume.pdf" download>📄 Download Resume</a>
+          <a class="btn" href="#projects" style="background:transparent;border:1px solid rgba(255,255,255,0.06);">See Projects</a>
         </div>
       </div>
-      <div class="card" onclick="toggleDetails('python')"> Python
-        <div id="python" class="details">
-          <p>Comfortable with core <strong>Python (Basic)</strong> concepts such as variables, loops, functions, and scripting for data handling.</p>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 style="text-align:center;color:var(--accent);margin-bottom:14px;font-family:Poppins">About Me</h2>
+      <div class="summary">
+        <p>Motivated professional with hands-on experience in <strong>SQL</strong>, <strong>database management</strong>, and basic <strong>Python</strong>. Passionate about turning raw data into actionable insights and building reliable database solutions. Seeking roles as a <span class="highlight">SQL Developer</span>, <span class="highlight">Data Analyst</span>, or <span class="highlight">Database Administrator</span>.</p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 style="text-align:center;color:var(--accent);margin-bottom:14px;font-family:Poppins">Technical Skills</h2>
+      <div class="grid" aria-live="polite">
+        <div class="card" role="article">
+          <h3>SQL</h3>
+          <p>Intermediate — complex joins, window functions, subqueries, aggregations and performance tuning basics.</p>
+        </div>
+
+        <div class="card">
+          <h3>Python</h3>
+          <p>Basic scripting for data cleaning, pandas, and automation tasks.</p>
+        </div>
+
+        <div class="card">
+          <h3>Power BI</h3>
+          <p>Interactive dashboards, data modelling and visual storytelling.</p>
+        </div>
+
+        <div class="card">
+          <h3>Web (HTML & CSS)</h3>
+          <p>Responsive layouts, component based structure, and clean UI design for portfolio sites.</p>
+        </div>
+
+        <div class="card">
+          <h3>Design Tools</h3>
+          <p>Figma & Canva for prototypes, wireframes and social graphics.</p>
+        </div>
+
+        <div class="card">
+          <h3>Office & Collaboration</h3>
+          <p>MS Office, Google Suite — project documentation and reporting.</p>
         </div>
       </div>
-      <div class="card" onclick="toggleDetails('htmlcss')"> HTML & CSS
-        <div id="htmlcss" class="details">
-          <p>Proficient in <strong>HTML & CSS (Intermediate)</strong> for building responsive web pages and clean user interfaces.</p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 style="text-align:center;color:var(--accent);margin-bottom:14px;font-family:Poppins">Selected Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Advanced SQL Employee Data Analysis</h3>
+          <img src="Advanced SQL Employee Data Analysis.png" alt="Employee Dashboard" class="project-img">
+          <p>Queries using filtering, joins, aggregations and window functions to extract HR insights.</p>
+          <p style="margin-top:8px"><a class="btn" href="https://github.com/Pavithra1226/advanced_queries.sql/blob/main/advanced_queries.sql" target="_blank">View on GitHub</a></p>
+        </article>
+
+        <article class="card">
+          <h3>Network Intrusion Detection</h3>
+          <img src="Network Intrusion Detection.png" alt="Intrusion Model" class="project-img">
+          <p>Random Forest classifier trained on the KDD dataset to identify network anomalies with high accuracy.</p>
+          <p style="margin-top:8px"><a class="btn" href="https://github.com/Pavithra1226/data-visualization/blob/main/intrusion%20detection-checkpoint.ipynb" target="_blank">View Notebook</a></p>
+        </article>
+
+        <article class="card">
+          <h3>Employee Dashboard & Insights</h3>
+          <img src="chart.png" alt="Employee Dashboard" class="project-img">
+          <p>Power BI dashboard showing salary distributions, leave analysis, and employee trends for management decisions.</p>
+          <p style="margin-top:8px"><a class="btn" href="https://github.com/Pavithra1226/employee-insights-dashboard" target="_blank">View on GitHub</a></p>
+        </article>
+
+        <article class="card">
+          <h3>Inten – Internship Finder App (UI)</h3>
+          <img src="inten-thumbnail.png" alt="Inten App UI" class="project-img">
+          <p>Figma prototype for a mobile internship application with job listing, profile and application tracking flows.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <h2 style="text-align:center;color:var(--accent);margin-bottom:14px;font-family:Poppins">Certifications</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Cisco Data Analyst Professional Certificate</h3>
+          <img src="forage.jpg" alt="Cisco Certificate">
+        </div>
+        <div class="card">
+          <h3>Python Programming – GUVI</h3>
+          <img src="GuviCertification.png" alt="Guvi Certificate">
         </div>
       </div>
-      <div class="card" onclick="toggleDetails('figma')"> Figma
-        <div id="figma" class="details">
-          <p>Skilled in <strong>Figma</strong> for designing wireframes, prototypes, and modern UI layouts.</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 style="text-align:center;color:var(--accent);margin-bottom:14px;font-family:Poppins">Contact</h2>
+      <div class="grid" style="margin-top:12px">
+        <div class="card" style="text-align:center">
+          <h3>📧 Email</h3>
+          <p><a href="mailto:pavithraragu26@gmail.com" style="color:#e6f7ff;text-decoration:underline">pavithraragu26@gmail.com</a></p>
+        </div>
+
+        <div class="card" style="text-align:center">
+          <h3>🔗 LinkedIn</h3>
+          <p><a href="https://www.linkedin.com/in/pavithra-ragu" target="_blank" style="color:#e6f7ff;text-decoration:underline">linkedin.com/in/pavithra-ragu</a></p>
+        </div>
+
+        <div class="card" style="text-align:center">
+          <h3>💻 GitHub</h3>
+          <p><a href="https://github.com/Pavithra1226" target="_blank" style="color:#e6f7ff;text-decoration:underline">github.com/Pavithra1226</a></p>
         </div>
       </div>
-      <div class="card" onclick="toggleDetails('canva')"> Canva
-        <div id="canva" class="details">
-          <p>Proficient in <strong>Canva (Advanced)</strong> for social media graphics, posters, and presentations.</p>
-        </div>
-      </div>
-      <div class="card" onclick="toggleDetails('gsuite')"> Google Suite
-        <div id="gsuite" class="details">
-          <p>Experienced with <strong>Google Docs, Sheets, Slides</strong> for collaboration and data management.</p>
-        </div>
-      </div>
-      <div class="card" onclick="toggleDetails('office')"> MS Office Suite
-        <div id="office" class="details">
-          <p>Proficient with <strong>Word, Excel, PowerPoint</strong> for documentation, data analysis, and presentations.</p>
-        </div>
-      </div>
-      <div class="card" onclick="toggleDetails('powerbi')"> Power BI
-        <div id="powerbi" class="details">
-          <p>Skilled in <strong>Power BI</strong> for interactive dashboards, data visualization, and reporting.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects -->
-  <section id="projects" class="container">
-    <h2>Projects</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Advanced SQL Employee Data Analysis</h3>
-         <img src="Advanced SQL Employee Data Analysis.png" alt="Employee Dashboard" class="project-img">
-        <p>SQL queries using filtering, aggregation, joins, and subqueries to extract insights from employee datasets.</p>
-        <a href="https://github.com/Pavithra1226/advanced_queries.sql/blob/main/advanced_queries.sql" target="_blank">🔗 View on GitHub</a>
-      </div>
-      <div class="card">
-        <h3>Network Intrusion Detection</h3>
-         <img src="Network Intrusion Detection.png" alt="Employee Dashboard" class="project-img">
-        <p>Machine learning model with 99.98% accuracy using Random Forest on KDD Cup 99 dataset.</p>
-        <a href="https://github.com/Pavithra1226/data-visualization/blob/main/intrusion%20detection-checkpoint.ipynb" target="_blank">🔗 View on GitHub</a>
-      </div>
-      <div class="card">
-        <h3>Employee Dashboard & Insights</h3>
-        <img src="chart.png" alt="Employee Dashboard" class="project-img">
-        <p>Interactive Power BI dashboard showing employee trends, salary distributions, and leave analysis. Provides visual insights for management decisions.</p>
-        <p><strong>Tech:</strong> Power BI, Excel</p>
-        <a href="https://github.com/Pavithra1226/employee-insights-dashboard" target="_blank">🔗 View on GitHub</a>
-      </div>
-    </div>
-  </section>
+    <footer>
+      &copy; 2025 Pavithra R · Designed & maintained by Pavithra
+    </footer>
+  </main>
 
-  <!-- Certifications -->
-  <section id="certifications" class="container certificates">
-    <h2>Certifications</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Cisco Data Analyst Professional Certificate</h3>
-        <img src="forage.jpg" alt="Cisco Certificate">
-      </div>
-      <div class="card">
-        <h3>Python Programming – GUVI</h3>
-        <img src="GuviCertification.png" alt="Python Certificate">
-      </div>
-    </div>
-    <!-- 🆕 New Project: Inten App -->
-    <div class="card">
-      <h3>Inten – Internship Finder App</h3>
-      <!-- Video thumbnail -->
-      <div class="video-wrapper" style="position: relative; cursor: pointer;" onclick="playVideo(this)">
-        <img src="inten-thumbnail.png" alt="Inten App UI" class="project-img">
-        <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:3rem; color:#ffd700;">▶</div>
-        <video width="100%" style="display:none; border-radius:12px;" controls>
-          <source src="Ui.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <p><strong>Tool:</strong> Figma</p>
-      <p><strong>Description:</strong> A mobile app that connects students with internships across government, private, and non-profit sectors. Includes login, signup, profile management, job listings, and application tracking.</p>
-      <p><strong>Skills:</strong> UI/UX Design · Wireframing · Prototyping · User Flow</p>
-    </div>
-  </div>
-  </section>
- <script>
-function playVideo(wrapper) {
-  const img = wrapper.querySelector('img');
-  const video = wrapper.querySelector('video');
-  const playBtn = wrapper.querySelector('div');
-  img.style.display = 'none';
-  playBtn.style.display = 'none';
-  video.style.display = 'block';
-  video.play();
-}
-</script>
+  <script>
+    // Simple typed rotation for the role text (Option B: improved UI)
+    (function(){
+      const roles = ['SQL Developer','Data Analyst','Database Administrator'];
+      const el = document.getElementById('typed-role');
+      let idx = 0; let char = 0; let forward = true; let waiting = false;
 
-  <!-- Contact -->
-  <section id="contact" class="container">
-    <h2>Contact </h2>
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:1.5rem; margin-top:2rem;">
-      <div class="card" style="text-align:center;">
-        <h3>📧 Email</h3>
-        <p><a href="mailto:pavithraragu26@gmail.com">pavithraragu26@gmail.com</a></p>
-      </div>
-      <div class="card" style="text-align:center;">
-        <h3>🔗 LinkedIn</h3>
-        <p><a href="https://www.linkedin.com/in/pavithra-ragu" target="_blank">linkedin.com/in/pavithra-ragu</a></p>
-      </div>
-      <div class="card" style="text-align:center;">
-        <h3>💻 GitHub</h3>
-        <p><a href="https://github.com/Pavithra1226" target="_blank">github.com/Pavithra1226</a></p>
-      </div>
-    </div>
-  </section>
-</main>
-
-<!-- Resume Download Button -->
-<div style="text-align:center; margin-top: 2rem;">
-  <a href="Pavithra .R _Resume.pdf" download 
-     style="background: #ffd700; color: #0e0e0e; padding: 0.8rem 1.5rem; 
-            border-radius: 8px; font-weight: bold; text-decoration: none; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: 0.3s;">
-    📄 Download Resume
-  </a>
-</div>
-
-<footer>
-  &copy; 2025 Pavithra R. All rights reserved.
-</footer>
-
-<script>
-  function toggleDetails(id) {
-    const el = document.getElementById(id);
-    el.parentElement.classList.toggle("open");
-  }
-
-  const sections = document.querySelectorAll("section");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add("visible");
+      function step(){
+        if(waiting) return;
+        const current = roles[idx];
+        if(forward){
+          el.textContent = current.slice(0, ++char);
+          if(char === current.length){ waiting = true; setTimeout(()=>{forward=false; waiting=false},1400)}
+        } else {
+          el.textContent = current.slice(0, --char);
+          if(char === 0){ forward = true; idx = (idx+1)%roles.length }
+        }
       }
+      setInterval(step,80);
+    })();
+
+    // Intersection observer for reveal effect
+    const sections = document.querySelectorAll('section');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible') });
+    },{threshold:0.12});
+    sections.forEach(s=>io.observe(s));
+
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const href = a.getAttribute('href');
+        if(href.startsWith('#')){
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
     });
-  }, { threshold: 0.1 });
-
-  sections.forEach(section => { observer.observe(section); });
-</script>
-
+  </script>
 </body>
 </html>
-
-
